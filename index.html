@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lee Sungyo — Electrical Engineering student at UIUC. Projects in CUDA GPU computing, FPGA graphics, and systems software.">
+  <meta name="theme-color" content="#f6f5f0">
+  <title>Lee Sungyo | Electrical Engineering</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2317252a'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-size='32' font-weight='700' fill='%23cef17b'%3ELS%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Lee Sungyo, home"><span class="brand-mark" aria-hidden="true">LS<span>↗</span></span><span>Lee Sungyo</span></a>
+      <nav aria-label="Main navigation"><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#about">About</a></nav>
+      <a class="header-resume" href="lee_sungyo_cv.pdf" target="_blank" rel="noopener">Resume <span aria-hidden="true">↗</span><span class="sr-only"> (PDF, opens in a new tab)</span></a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero container" id="home" aria-labelledby="hero-heading">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Electrical Engineering · UIUC</p>
+        <h1 id="hero-heading">Hardware-aware.<br><span>Software-driven.</span></h1>
+        <p class="hero-intro">I'm Lee Sungyo, an electrical engineering undergraduate building across GPU computing, FPGA graphics, and systems software.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#projects">Explore my work <span aria-hidden="true">↓</span></a><a class="text-link" href="lee_sungyo_cv.pdf" download>Download CV <span aria-hidden="true">↗</span></a></div>
+        <p class="hero-note">Urbana, Illinois <span aria-hidden="true">/</span> Expected graduation May 2028</p>
+      </div>
+      <div class="engineering-panel" aria-label="Areas of work: GPU computing, FPGA graphics, and systems software">
+        <div class="panel-top"><span class="mono">ENGINEERING / SELECTED WORK</span><span class="panel-dot" aria-hidden="true"></span></div>
+        <div class="chip-scene" aria-hidden="true"><div class="trace trace-1"></div><div class="trace trace-2"></div><div class="trace trace-3"></div><div class="trace trace-4"></div><div class="chip"><span class="chip-label">HW × SW</span><span class="chip-sub">COMPUTE · CONNECT · BUILD</span></div><span class="coordinate coord-top">01 / COMPUTE</span><span class="coordinate coord-bottom">02 / INTERFACE</span></div>
+        <div class="panel-row"><span class="panel-number">01</span><span>GPU computing</span><span class="panel-tech">CUDA / A40</span></div>
+        <div class="panel-row"><span class="panel-number">02</span><span>FPGA graphics</span><span class="panel-tech">RTL / AXI</span></div>
+        <div class="panel-row"><span class="panel-number">03</span><span>Systems software</span><span class="panel-tech">C / RISC-V</span></div>
+      </div>
+    </section>
+    <section class="projects section container" id="projects" aria-labelledby="projects-heading">
+      <div class="section-heading"><div><p class="eyebrow">01 / Selected work</p><h2 id="projects-heading">From kernels to pixels.</h2></div><p>Four projects spanning parallel computation,<br class="desktop-break"> digital hardware, and operating systems.</p></div>
+      <div class="project-grid">
+        <article class="project project-featured">
+          <div class="project-top"><span class="mono">01 / GPU COMPUTING</span><span class="project-symbol" aria-hidden="true">↗</span></div>
+          <h3>GPU CNN Inference<br>&amp; Kernel Fusion</h3>
+          <p class="project-description">Batched convolution for a modified LeNet-5 on Fashion-MNIST, with CUDA kernels that bring input unrolling, matrix multiplication, and output permutation together.</p>
+          <div class="metric-pair"><div><strong>87.14<span>%</span></strong><span>CPU-reference accuracy matched</span></div><div><strong>10,000</strong><span>Evaluation images</span></div></div>
+          <ul class="tags" aria-label="Technologies"><li>CUDA C++</li><li>NVIDIA A40</li><li>Nsight</li></ul>
+          <details><summary>Implementation notes <span aria-hidden="true">+</span></summary><div class="detail-content"><ul><li>Implemented im2col input unrolling and shared-memory tiled matrix multiplication.</li><li>Fused unrolling, multiplication, and output permutation into one kernel.</li><li>Profiled CPU/GPU variants with gprof, Nsight Systems, and Nsight Compute.</li><li>Measured 56.70 ms combined kernel time for the direct-convolution baseline on NVIDIA A40; this is a baseline measurement, not the fused-kernel timing.</li></ul></div></details>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="mono">02 / EMBEDDED GRAPHICS</span><span class="project-symbol" aria-hidden="true">⌘</span></div>
+          <h3>USB-Controlled<br>HDMI Graphics System</h3>
+          <p class="project-description">A keyboard-controlled graphics demo on a MicroBlaze FPGA SoC, connecting USB input to objects on an HDMI display.</p>
+          <div class="signal-path" aria-label="System path: USB keyboard to SPI host to MicroBlaze to HDMI"><span>USB</span><span aria-hidden="true">→</span><span>SPI</span><span aria-hidden="true">→</span><span>SoC</span><span aria-hidden="true">→</span><span>HDMI</span></div>
+          <ul class="tags" aria-label="Technologies"><li>C</li><li>SystemVerilog</li><li>MicroBlaze</li><li>SPI</li></ul>
+          <details><summary>Implementation notes <span aria-hidden="true">+</span></summary><div class="detail-content"><ul><li>Implemented C routines for single-register and multi-byte transfers to a MAX3421E USB host controller over SPI.</li><li>Processed keyboard input to update on-screen objects.</li><li>Used UART keycode output and hardware display tests to debug input and graphics behavior.</li></ul></div></details>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="mono">03 / DIGITAL DESIGN</span><span class="project-symbol" aria-hidden="true">▤</span></div>
+          <h3>AXI4-Lite<br>Color Text Controller</h3>
+          <p class="project-description">An 80 × 30 HDMI text controller with dual-port BRAM video memory, font-ROM rendering, and per-character foreground and background colors.</p>
+          <div class="text-demo" aria-hidden="true"><span>HELLO, HARDWARE.</span><span class="demo-line">80 × 30 <i>·</i> 16-COLOR PALETTE</span><div class="palette"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <ul class="tags" aria-label="Technologies"><li>SystemVerilog</li><li>BRAM</li><li>AXI4-Lite</li><li>Vivado / Vitis</li></ul>
+          <details><summary>Implementation notes <span aria-hidden="true">+</span></summary><div class="detail-content"><ul><li>Adapted AXI4-Lite handshaking for synchronous BRAM latency.</li><li>Exposed VRAM, a programmable 16-color palette, and synchronization registers through memory-mapped I/O.</li><li>Implemented C palette routines and verified AXI readback in simulation.</li><li>Verified frame-synchronized color animation on FPGA.</li></ul></div></details>
+        </article>
+        <article class="project">
+          <div class="project-top"><span class="mono">04 / SYSTEMS SOFTWARE</span><span class="project-symbol" aria-hidden="true">&gt;_</span></div>
+          <h3>RISC-V Kernel<br>&amp; Filesystem</h3>
+          <p class="project-description">Extensions to an RV64 educational kernel, including a write-back LRU block cache, NGFS file operations, and ELF executable loading.</p>
+          <div class="system-layers" aria-label="Project components"><span>ELF loader</span><span>NGFS filesystem</span><span>LRU block cache</span></div>
+          <ul class="tags" aria-label="Technologies"><li>C</li><li>RISC-V</li><li>QEMU</li></ul>
+          <details><summary>Implementation notes <span aria-hidden="true">+</span></summary><div class="detail-content"><ul><li>Implemented file creation, resizing, deletion, and per-file locking.</li><li>Added ELF validation/loading with segment initialization and entry-point checks.</li><li>Ran supported game executables in QEMU and passed filesystem/cache tests.</li></ul></div></details>
+        </article>
+      </div>
+    </section>
+    <section class="experience section container" id="experience" aria-labelledby="experience-heading">
+      <div class="section-heading"><div><p class="eyebrow">02 / Experience</p><h2 id="experience-heading">Engineering in practice.</h2></div></div>
+      <div class="experience-row"><div class="experience-date mono">MAY 2026 — JUL 2026</div><div class="experience-body"><p class="organization">ISU Petasys Corp.</p><h3>PCB Production Operator</h3><p>Operated PCB inner-layer production equipment on 12-hour rotating shifts. Inspected panels for opens, shorts, contamination, and surface defects.</p><ul class="tags"><li>PCB manufacturing</li><li>Defect inspection</li></ul></div><span class="experience-index" aria-hidden="true">01</span></div>
+      <div class="experience-row"><div class="experience-date mono">OCT 2024 — APR 2026</div><div class="experience-body"><p class="organization">Republic of Korea Army</p><h3>Cybersecurity Analyst</h3><p>Investigated Splunk alerts, network traffic, and system logs across corps-level systems, supporting incident response and remediation.</p><p>Administered Linux servers, user access, NAC, and firewall policies. Wrote Bash and Python scripts for system administration, backups, and file-integrity verification.</p><ul class="tags"><li>Linux</li><li>Splunk</li><li>Python / Bash</li><li>Incident response</li></ul></div><span class="experience-index" aria-hidden="true">02</span></div>
+    </section>
+    <section class="about-section" id="about" aria-labelledby="about-heading"><div class="container about-grid">
+      <div><p class="eyebrow">03 / Background</p><h2 id="about-heading">A foundation across<br>hardware and software.</h2><p class="about-copy">I'm pursuing a B.S. in Electrical Engineering at the University of Illinois Urbana-Champaign. My technical interests include GPU programming, computer graphics, embedded systems, and performance analysis.</p><div class="education"><span class="education-mark" aria-hidden="true">I</span><div><h3>University of Illinois<br>Urbana-Champaign</h3><p>B.S. Electrical Engineering · Expected May 2028</p><p class="education-gpa">GPA 3.82 / 4.00</p></div></div><p class="coursework"><strong>Academic foundation</strong><br>Analog signals, probability, digital systems, data structures, discrete mathematics, linear algebra, and C/C++ programming.</p></div>
+      <div class="skills"><div class="skill-group"><h3>Programming</h3><p>C · C++ · CUDA C++ · Python<br>SystemVerilog · RISC-V Assembly</p></div><div class="skill-group"><h3>Tools &amp; platforms</h3><p>Linux · Git · Bash · Vivado · Vitis<br>Nsight Systems / Compute · gprof<br>MATLAB · Splunk · LaTeX</p></div><div class="skill-group"><h3>Hardware</h3><p>FPGA verification · RTL / FSM design<br>AXI4-Lite · SPI · UART · Memory-mapped I/O</p></div><div class="skill-group"><h3>Languages</h3><p>Korean · Chinese</p></div></div>
+    </div></section>
+    <section class="contact section container" id="contact" aria-labelledby="contact-heading"><div><p class="eyebrow">04 / Get in touch</p><h2 id="contact-heading">Let's connect.</h2><p>For engineering opportunities and conversations about my work.</p><a class="email-link" href="mailto:isaacl6@illinois.edu">isaacl6@illinois.edu <span aria-hidden="true">↗</span></a></div><div class="contact-links"><a href="https://github.com/1sk9ine" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a><a href="https://www.linkedin.com/in/sungyo-lee/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a><a href="lee_sungyo_cv.pdf" download>Download CV <span aria-hidden="true">↓</span></a></div></section>
+  </main>
+  <footer class="container site-footer"><span>© 2026 Lee Sungyo</span><span>Electrical Engineering · Urbana, IL</span><a href="#home">Back to top ↑</a></footer>
+</body>
+</html>
